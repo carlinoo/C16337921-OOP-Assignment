@@ -1,10 +1,10 @@
 // This class with be the one who displays and does actions for the speedometer. It inherits from the Indicator
 
 class Speedometer extends Indicator {
-  Arrow arrow;
-  float speed = 0;
-  float max_speed = 500;
-  PVector pos = new PVector();
+  private Arrow arrow;
+  private float speed = 0;
+  private float max_speed = 500;
+  private PVector pos = new PVector();
 
   
   
@@ -30,15 +30,27 @@ class Speedometer extends Indicator {
   // This method will position the arrow at certain speed
   void change_speed_to(float speed) {
     if (speed <= 0) {
-     arrow.set_angle(0); 
+      this.speed = 0;
+     arrow.set_angle(0);
+     return;
     } else if (speed >= max_speed) {
      arrow.set_angle(180); 
+     this.speed = max_speed;
+     return;
     }
+    
+    this.speed = speed;
+    
+    // get the angle and set it
+    float angle = (speed/max_speed * 180);
+    arrow.set_angle(angle); 
+ 
   }
   
   
   void accelerate(float acc) {
    this.speed += acc; 
+   this.change_speed_to(this.speed);
   }
 
   
