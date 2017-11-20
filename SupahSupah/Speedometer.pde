@@ -39,8 +39,4 @@ class Speedometer extends Indicator {
     float angle = (sp.speed/sp.max_speed * 180);
     arrow.set_angle(angle);
   }
-  
-  
-  
-
 }

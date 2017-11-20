@@ -1,6 +1,7 @@
 // This is the main class of the entire the project
 class SupahMachine {
   private boolean is_accelerating;
+  private boolean is_charging = false;
   private float acceleration = 1;
   private float deceleration = 0.5;
   private float speed = 0;
@@ -20,6 +21,7 @@ class SupahMachine {
   void init() {
     controller.display();
     this.move();
+    this.update_battery();
   }
   
   
@@ -50,9 +52,9 @@ class SupahMachine {
   }
 
   
-  // This method will change the is_accelerating boolean to true
+  // This method will change the is_accelerating boolean to true if there is enough battery
   void accelerate() {
-   this.is_accelerating = true; 
+   this.is_accelerating = (this.battery > 0) ? true : false; 
   }
   
   
@@ -92,7 +94,30 @@ class SupahMachine {
   float battery_percentage() {
     return (this.battery/this.max_battery) * 100;
   }
-  
 
+  
+  // This function will use the battery
+  void update_battery() {
+    if (this.is_charging) {
+      this.battery += 1;
+      
+      // only take away battery if the machine is accelerating
+    } else if (this.is_accelerating) {
+     this.battery -= this.speed * 0.002; 
+    }
+  }
+  
+  
+  
+  // This will put the machine to charge
+  void charge() {
+     this.is_charging = true;
+  }
+  
+  
+  // This will stop charging the machine
+  void stop_charging() {
+    this.is_charging = false; 
+  }
   
 }

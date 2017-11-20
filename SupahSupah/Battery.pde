@@ -26,6 +26,9 @@ class Battery {
    fill(255);
    rect(this.pos.x + this.w, this.pos.y + this.h/3, 5, this.h/3); 
    
+   // Update the color of the battery
+   this.update_battery_color();
+   
    // display the amount of battery left
    fill(this.c);
    noStroke();
@@ -35,15 +38,27 @@ class Battery {
   
   
   
-  // This will set the color of the battery
-  void set_color(color c) {
-   this.c = c; 
+  // This will return the width needed to display the amout of battery needed
+  float battery_width() {
+   float w = map(sp.battery_percentage(), 0, 100, 0, this.w);
+   
+   return (w > 0) ? w : 0;
   }
   
   
-  // This will return the width needed to display the amout of battery needed
-  float battery_width() {
-   return map(sp.battery_percentage(), 0, 100, 0, this.w);
+  // This will update the battery color depending on the amount of battery
+  private void update_battery_color() {
+    if (sp.battery_percentage() > 85) {
+      this.c = color(0, 255, 0);
+    } else if (sp.battery_percentage() > 65) {
+      this.c = color(178, 255, 0);
+    } else if (sp.battery_percentage() > 45) {
+      this.c = color(255, 233, 0);
+    } else if (sp.battery_percentage() > 25) {
+      this.c = color(255, 102, 0);
+    } else if (sp.battery_percentage() > 10) {
+      this.c = color(255, 0, 0);
+    }
   }
   
 }
