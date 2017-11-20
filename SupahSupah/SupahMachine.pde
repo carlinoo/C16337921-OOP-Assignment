@@ -5,6 +5,8 @@ class SupahMachine {
   private float deceleration = 0.5;
   private float speed = 0;
   private float max_speed = 500;
+  private float battery = 300;
+  private float max_battery = 500;
   
   Controller controller;
   
@@ -84,4 +86,13 @@ class SupahMachine {
   void mouse_released() {
     controller.mouse_released();
   }
+  
+  
+  // This will return the current percentage battery of the Machine
+  float battery_percentage() {
+    return (this.battery/this.max_battery) * 100;
+  }
+  
+
+  
 }
