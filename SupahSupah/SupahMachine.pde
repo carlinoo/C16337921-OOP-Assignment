@@ -58,8 +58,20 @@ class SupahMachine {
   void decelerate() {
     this.is_accelerating = false;
   }
+  
+  
+  
+  // This method will make the car press the breaks
+  void breaks() {
+   this.is_accelerating = false;
+   this.deceleration = 5;
+  }
 
   
+  
+  void stop_breaking() {
+    this.deceleration = 0.5;
+  }
   
   
   // When the mouse is pressed

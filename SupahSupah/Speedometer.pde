@@ -22,7 +22,7 @@ class Speedometer extends Indicator {
   }
   
   
-  // This method will display theaoutside of the speedometer
+  // This method will display theoutside of the speedometer
   void display() {
    noStroke();
    fill(255);
