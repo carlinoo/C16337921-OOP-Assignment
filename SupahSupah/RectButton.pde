@@ -4,6 +4,7 @@ class RectButton extends Button {
   
   RectButton(float x, float y, float w, float h) {
     super(x, y, w, h);
+    this.c = color(255, 145, 23);
   }
   
   RectButton(float x, float y, float w, float h, color c) {
@@ -15,7 +16,8 @@ class RectButton extends Button {
   void display() {
    fill(this.c);
    noStroke();
-   rect(this.pos.x, this.pos.y, this.w, this.h); 
+   rect(this.pos.x, this.pos.y, this.w, this.h);
+   this.display_text();
   }
   
   
