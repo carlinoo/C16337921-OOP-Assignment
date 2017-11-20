@@ -25,8 +25,8 @@ void draw() {
 
 
 // This will run when the mouse is pressed
-void mousePressed() {
- if (rb.is_clicked()) {
-   println("Clicked");  
- }
-}
+//void mousePressed() {
+// if (rb.is_clicked()) {
+//   println("Clicked");  
+// }
+//}

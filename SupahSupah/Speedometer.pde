@@ -2,6 +2,7 @@
 
 class Speedometer extends Indicator {
   private Arrow arrow;
+  private SpeedDisplay display;
   private float speed = 0;
   private float max_speed = 500;
   private PVector pos = new PVector();
@@ -15,6 +16,9 @@ class Speedometer extends Indicator {
     
     // create the arrow for the speedomether with the inital value of 0
     arrow = new Arrow(85, this.pos.x, this.pos.y, 0);
+    
+    // create the display
+    display = new SpeedDisplay(this.pos.x - 40, this.pos.y - 60, 80, 50, color(185, 185, 185));
   }
   
   
@@ -23,6 +27,8 @@ class Speedometer extends Indicator {
    noStroke();
    fill(255);
    arc(this.pos.x, this.pos.y, 200 - 10, 200 - 10, radians(180), radians(360), CHORD);
+   display.display();
+   display.display_text(String.valueOf(this.speed));
    arrow.display();
   }
   
