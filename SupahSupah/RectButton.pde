@@ -1,4 +1,4 @@
-//
+// This button inherits from button, and the main difference is the shape. this one is rectangular
 
 class RectButton extends Button {
   

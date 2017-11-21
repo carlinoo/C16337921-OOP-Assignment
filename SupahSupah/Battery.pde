@@ -48,17 +48,22 @@ class Battery {
   
   // This will update the battery color depending on the amount of battery
   private void update_battery_color() {
-    if (sp.battery_percentage() > 85) {
-      this.c = color(0, 255, 0);
-    } else if (sp.battery_percentage() > 65) {
-      this.c = color(178, 255, 0);
-    } else if (sp.battery_percentage() > 45) {
-      this.c = color(255, 233, 0);
-    } else if (sp.battery_percentage() > 25) {
-      this.c = color(255, 102, 0);
-    } else if (sp.battery_percentage() > 10) {
-      this.c = color(255, 0, 0);
-    }
+    //if (sp.battery_percentage() > 85) {
+    //  this.c = color(0, 255, 0);
+    //} else if (sp.battery_percentage() > 65) {
+    //  this.c = color(178, 255, 0);
+    //} else if (sp.battery_percentage() > 45) {
+    //  this.c = color(255, 233, 0);
+    //} else if (sp.battery_percentage() > 25) {
+    //  this.c = color(255, 102, 0);
+    //} else if (sp.battery_percentage() > 10) {
+    //  this.c = color(255, 0, 0);
+    //}
+    
+    float red = map(sp.battery_percentage(), 0, 100, 255, 0);
+    float green = map(sp.battery_percentage(), 0, 100, 0, 255);
+    
+    this.c = color(red, green, 0);
   }
   
 }

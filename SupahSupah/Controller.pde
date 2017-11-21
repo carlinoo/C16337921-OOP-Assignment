@@ -5,6 +5,7 @@ class Controller {
   RectButton accelerate_button;
   RectButton break_button;
   Battery battery;
+  BatteryMonitor battery_monitor;
   
   Controller() {
    speedometer = new Speedometer();
@@ -15,6 +16,8 @@ class Controller {
    break_button.set_text("Break", color(255, 255, 255));
    
    battery = new Battery(width/2 - 50, height - 120, 100, 30);
+   
+   battery_monitor = new BatteryMonitor(width/2 - 75, height - 70, 150, 50);
   }
   
  void display() {
@@ -33,6 +36,7 @@ class Controller {
    accelerate_button.display();
    break_button.display();
    battery.display();
+   battery_monitor.display();
  }
  
  

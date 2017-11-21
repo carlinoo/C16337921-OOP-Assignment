@@ -1,5 +1,6 @@
 // This is the main class of the entire the project
 class SupahMachine {
+  
   private boolean is_accelerating;
   private boolean is_charging = false;
   private float acceleration = 1;

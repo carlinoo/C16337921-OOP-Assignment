@@ -1,4 +1,4 @@
-//
+// This class will be used for buttons
 
 class Button {
  protected PVector pos = new PVector();
