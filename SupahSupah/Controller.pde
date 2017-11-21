@@ -6,6 +6,8 @@ class Controller {
   RectButton break_button;
   Battery battery;
   BatteryMonitor battery_monitor;
+  RectButton settings_activation_button;
+  Setting setting;
   
   Controller() {
    speedometer = new Speedometer();
@@ -18,6 +20,11 @@ class Controller {
    battery = new Battery(width/2 - 50, height - 120, 100, 30);
    
    battery_monitor = new BatteryMonitor(width/2 - 75, height - 70, 150, 50);
+   
+   settings_activation_button = new RectButton(width - 50, height - 149, 50, 25, color(243, 65, 123));
+   settings_activation_button.set_text("More", color(255, 255, 255));
+   
+   setting = new Setting();
   }
   
  void display() {
@@ -37,6 +44,8 @@ class Controller {
    break_button.display();
    battery.display();
    battery_monitor.display();
+   settings_activation_button.display();
+   setting.modal.display();
  }
  
  
@@ -46,12 +55,26 @@ class Controller {
    if (accelerate_button.is_clicked()) {
      accelerate_button.set_color(color(120, 120, 120));
      sp.accelerate();
+     return;
    }
    
    // If break_button is pressed, start breaking
    if (break_button.is_clicked()) {
     break_button.set_color(color(120, 120, 120));
     sp.breaks();
+    return;
+   }
+   
+   // If the settings_activation_button is clicked show the modal
+   if (settings_activation_button.is_clicked()) {
+    setting.modal.show();
+    return;
+   }
+   
+   // If the settings modal is open and it has been clicked outside or the close button has been clicked, close the modal
+   if (!setting.modal.is_hidden() && !setting.modal.is_clicked() /*&& !setting.closing_button.is_clicked()*/) {
+     setting.modal.hide();
+     return;
    }
  }
  
@@ -69,5 +92,6 @@ class Controller {
      break_button.set_color(color(255, 145, 23));
      sp.stop_breaking();
    }
+   
  }
 }
