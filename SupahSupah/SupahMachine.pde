@@ -11,15 +11,18 @@ class SupahMachine {
   private float max_battery = 500;
   
   Controller controller;
+  Background background;
   
   // Constructor
   SupahMachine() {
     controller = new Controller();
+    background = new Background();
   }
   
   
   // The initiation of the entire Project
   void init() {
+    background.display();
     controller.display();
     this.move();
     this.update_battery();
