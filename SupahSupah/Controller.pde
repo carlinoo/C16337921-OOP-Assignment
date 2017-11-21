@@ -72,7 +72,7 @@ class Controller {
    }
    
    // If the settings modal is open and it has been clicked outside or the close button has been clicked, close the modal
-   if (!setting.modal.is_hidden() && !setting.modal.is_clicked() /*&& !setting.closing_button.is_clicked()*/) {
+   if (!setting.modal.is_hidden() && (!setting.modal.is_clicked() || setting.modal.close_button.is_clicked())) {
      setting.modal.hide();
      return;
    }

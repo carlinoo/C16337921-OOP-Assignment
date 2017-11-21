@@ -5,12 +5,15 @@ class Modal {
  private float w;
  private float h;
  private boolean hidden = true;
+ RectButton close_button;
  
  Modal(float x, float y, float w, float h) {
    this.pos.x = x;
    this.pos.y = y;
    this.w = w;
    this.h = h;
+   close_button = new RectButton(this.pos.x + this.w - 25, this.pos.y, 25, 25);
+   close_button.set_text("x", color(255, 255, 255));
  }
  
  
@@ -20,6 +23,7 @@ class Modal {
     fill(255);
     noStroke();
     rect(this.pos.x, this.pos.y, this.w, this.h);
+    close_button.display();
    }
 
   
