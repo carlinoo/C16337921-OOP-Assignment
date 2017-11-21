@@ -76,6 +76,13 @@ class Controller {
      setting.modal.hide();
      return;
    }
+   
+   // If the charging button is pressed
+   if (setting.modal.recharge_button.is_clicked()) {
+     sp.charge();
+     sp.update_battery();
+     return;
+   }
  }
  
  
@@ -85,12 +92,21 @@ class Controller {
    if (accelerate_button.is_clicked()) {
      accelerate_button.set_color(color(255, 145, 23));
      sp.decelerate();
+     return;
    }
    
    // If break button is released, stop breaking
    if (break_button.is_clicked()) {
      break_button.set_color(color(255, 145, 23));
      sp.stop_breaking();
+     return;
+   }
+   
+   
+   // If the charging button is released
+   if (setting.modal.recharge_button.is_clicked()) {
+     sp.stop_charging();
+     return;
    }
    
  }

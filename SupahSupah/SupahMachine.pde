@@ -100,7 +100,11 @@ class SupahMachine {
   // This function will use the battery
   void update_battery() {
     if (this.is_charging) {
-      this.battery += 1;
+      this.battery += 100;
+      
+      if (this.battery > this.max_battery) {
+        this.battery = this.max_battery;
+      }
       
       // only take away battery if the machine is accelerating
     } else if (this.is_accelerating) {

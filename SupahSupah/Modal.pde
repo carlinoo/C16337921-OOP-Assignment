@@ -6,6 +6,8 @@ class Modal {
  private float h;
  private boolean hidden = true;
  RectButton close_button;
+ RectButton recharge_button;
+ private ArrayList<String> text = new ArrayList<String>();
  
  Modal(float x, float y, float w, float h) {
    this.pos.x = x;
@@ -14,6 +16,8 @@ class Modal {
    this.h = h;
    close_button = new RectButton(this.pos.x + this.w - 25, this.pos.y, 25, 25);
    close_button.set_text("x", color(255, 255, 255));
+   recharge_button = new RectButton(width/2 - 100, height - 200, 200, 100);
+   recharge_button.set_text("Re-Charge Battery", color(255, 255, 255));
  }
  
  
@@ -24,6 +28,8 @@ class Modal {
     noStroke();
     rect(this.pos.x, this.pos.y, this.w, this.h);
     close_button.display();
+    recharge_button.display();
+    display_text();
    }
 
   
@@ -59,6 +65,24 @@ class Modal {
       }
     }
     return false;
+ }
+ 
+ 
+ 
+ // This will set the text of the modal
+ void set_text(String s) {
+   this.text.add(s);
+ }
+ 
+ 
+ // This method will display the text sent as an aprgument
+ private void display_text() {
+  textAlign(CENTER);
+  textSize(18);
+  fill(0);
+  for (int i = 0; i < this.text.size(); i++) {
+    text(this.text.get(i), width/2, this.pos.y + (40 * (i + 1)));   
+  }
  }
 
 }
