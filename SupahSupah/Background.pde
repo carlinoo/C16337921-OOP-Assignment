@@ -4,12 +4,14 @@ class Background {
  PVector pos = new PVector();
  float w;
  float h;
+ ArrayList<StreetLine> street_lines;
  
  Background() {
    this.pos.x = 0;
    this.pos.y = 0;
    this.w = width;
    this.h = height - 150;
+   street_lines = new ArrayList<StreetLine>();
  }
  
  
@@ -26,7 +28,7 @@ class Background {
  }
  
  private void display_grass() {
-   fill(0, 255, 0);
+   fill(102, 204, 0);
    noStroke();
    beginShape();
    vertex(0, height);
@@ -39,5 +41,11 @@ class Background {
    vertex(2*width/3, 0);
    vertex(width, 0);
    endShape(CLOSE);
+ }
+ 
+ 
+ // This will display the street lines, add more to the array, delete to the array and resize
+ private void display_lines() {
+   
  }
 }
