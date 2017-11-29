@@ -68,7 +68,7 @@ class Background {
    
    for (int i = 0; i < lines_no; i++) {
      street_lines.get(i).display();
-     street_lines.get(i).update(sp.speed/40);
+     street_lines.get(i).update(sp.speed);
   
      // If the previous line has enough space, create one     
      if (street_lines.get(i).is_offscreen()) {
@@ -82,7 +82,7 @@ class Background {
  
  // This will create a line
  private void create_line() {
-   street_lines.add(new StreetLine(width/2, -15));
+   street_lines.add(new StreetLine(width/2, 0));
  }
  
 }

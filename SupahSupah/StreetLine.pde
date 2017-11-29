@@ -31,9 +31,10 @@ class StreetLine {
  
  // This will move the line by certain amount
   void update(float velocity) {
-   this.pos.y += velocity;
+   float movement_speed = map(this.pos.y, 0, height, 0.03, 0.2);
+   this.pos.y += velocity * movement_speed;
    this.w = map(this.pos.y, 0, height, 5, 20);
-   this.h = map(this.pos.y, 0, height, 15, 40);
+   this.h = map(this.pos.y, 0, height, 15, 60);
   }
   
   
