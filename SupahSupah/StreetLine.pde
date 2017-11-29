@@ -4,19 +4,21 @@ class StreetLine {
  private PVector pos = new PVector();
  private float w;
  private float h;
+ public float spacing;
  
  StreetLine(int x, int y) {
    this.pos.x = x;
    this.pos.y = y;
-   this.w = w;
-   this.h = h;
+   this.w = 5;
+   this.h = 5;
+   this.spacing = 5;
  }
  
  // Display the line
  void display() {
   noStroke();
   fill(255);
-  rect(this.pos.x - (this.w)/2, this.pos.y, this.w, this.h);
+  rect(this.pos.x - (this.w/2), this.pos.y, this.w, -this.h);
  }
  
  
@@ -31,7 +33,12 @@ class StreetLine {
   void update(float velocity) {
    this.pos.y += velocity;
    this.w = map(this.pos.y, 0, height, 5, 20);
-   this.h = map(this.pos.y, 0, height, 15, 100);
+   this.h = map(this.pos.y, 0, height, 15, 40);
+  }
+  
+  
+  float get_spacing() {
+   return this.spacing + this.h + this.pos.y; 
   }
  
  

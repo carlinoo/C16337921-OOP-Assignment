@@ -27,9 +27,6 @@ class Background {
    this.display_grass();
    this.display_lines();
    
-   if (frameCount % 60 == 0) {
-    this.create_line(); 
-   }
  }
  
  private void display_grass() {
@@ -51,16 +48,36 @@ class Background {
  
  // This will display the street lines, add more to the array, delete to the array and resize
  private void display_lines() {
-   for (StreetLine line : this.street_lines) {
-     line.display();
-     line.update(4);
-     
-     if (line.is_offscreen()) {
-       this.street_lines.remove(line); 
-       
-
+   int lines_no = street_lines.size();
+   
+   // If there are no lines, create one
+   if (lines_no < 1) {
+    create_line(); 
+   }
+   
+   // update lines_no
+   lines_no = street_lines.size();
+   
+   // If there is enough space, create a new line
+   if (street_lines.get(lines_no - 1).get_spacing() > 150) {
+     create_line();
+   }
+   
+    // update lines_no
+   lines_no = street_lines.size();
+   
+   for (int i = 0; i < lines_no; i++) {
+     street_lines.get(i).display();
+     street_lines.get(i).update(sp.speed/40);
+  
+     // If the previous line has enough space, create one     
+     if (street_lines.get(i).is_offscreen()) {
+       this.street_lines.remove(street_lines.get(i));
+       i--;
+       lines_no--;
      }
    }
+   
  }
  
  // This will create a line
