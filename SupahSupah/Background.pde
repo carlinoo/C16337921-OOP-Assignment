@@ -26,6 +26,10 @@ class Background {
    line(width, height, 2*width/3, 0);
    this.display_grass();
    this.display_lines();
+   
+   if (frameCount % 60 == 0) {
+    this.create_line(); 
+   }
  }
  
  private void display_grass() {
@@ -49,16 +53,19 @@ class Background {
  private void display_lines() {
    for (StreetLine line : this.street_lines) {
      line.display();
+     line.update(4);
      
      if (line.is_offscreen()) {
        this.street_lines.remove(line); 
+       
+
      }
    }
  }
  
  // This will create a line
  private void create_line() {
-   
+   street_lines.add(new StreetLine(width/2, -15));
  }
  
 }
